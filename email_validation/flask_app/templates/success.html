@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        <h2>FLASH!!!!! AHHHHHHHH</h2>
+            {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h2>Email Addresses Entered:
+        <table>
+            <thead>
+                {% for n in email %}
+                <tr>
+                    <td>{{ n.email }}</td>
+                    <td>{{ n.created_at.strftime('%B %-d, %Y %I:%M %p') }}</td>
+                    <td><a href="/destroy/{{n.id}}">Delete</a></p></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </h2>
+</body>
+</html>

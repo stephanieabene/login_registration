@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form action="/register" method="post">
+    {% with messages = get_flashed_messages(category_filter=['register']) %}     <!-- declare a variable called messages -->
+    {% if messages %}
+        <h2>ALERT!</h2>                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <p>First Name:
+        <p><input type="text" name="first_name"></p>
+    </p>
+    <p>Last Name:
+        <p><input type="text" name="last_name"></p>
+    </p>
+    <p>Email:
+        <p><input type="text" name="email"></p>
+    </p>
+    <p>Password:
+        <p><input type="text" name="password"></p>
+    </p>
+    <p>Confirm Password:
+        <p><input type="text" name="password_confirm"></p>
+    </p>
+    <p><input type="submit" value="Register"></p>
+    </form>
+    <form action="/login" method="post">
+        <h1>Login</h1>
+        {% with messages = get_flashed_messages(category_filter=['login']) %}     <!-- declare a variable called messages -->
+        {% if messages %}
+            <h2>ALERT!</h2>                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <p>Email:
+            <p><input type="text" name="email"></p>
+        </p>
+        <p>Password:
+            <p><input type="text" name="password"></p>
+        </p>
+        <p><input type="submit" value="Login"></p>
+        </form>
+</body>
+</html>
